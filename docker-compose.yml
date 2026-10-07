@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  weather_bot:
+    build: .
+    container_name: weather_bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      # Пробрасываем локальную папку ./data в папку /app/data внутри контейнера
+      # Это нужно, чтобы SQLite база сохранялась при перезапуске контейнера!
+      - ./data:/app/data 
